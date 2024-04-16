@@ -51,7 +51,7 @@ const Signup = () => {
                   id="password"
                   type="password"
                   {...register('password', { required: true })}
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 bg-slate-500 border border-gray-300 placeholder-gray-300 text-gray-100 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 bg-slate-500 border border-gray-300 placeholder-gray-300 text-gray-100 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
                 />
                 {errors.password && <span className="text-red-500">Password is required</span>}
@@ -73,7 +73,7 @@ const Signup = () => {
                   id="phone"
                   type="text"
                   {...register('phone', { required: true })}
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 bg-slate-500 border border-gray-300 placeholder-gray-300 text-gray-100 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 bg-slate-500 border border-gray-300 placeholder-gray-300 text-gray-100 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Phone"
                 />
                 {errors.phone && <span className="text-red-500">Phone is required</span>}
