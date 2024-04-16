@@ -24,16 +24,16 @@ const Login = () => {
             <div className='absolute w-full'>
                 <Header></Header>
             </div>
-            <div className="bg-gradient-to-r from-slate-600 to-slate-900 min-h-screen bg-gray-50 flex flex-col md:flex-row">
-                <div className="md:w-1/2 flex justify-center items-end bg-contain bg-center md:bg-center md:bg-cover" >
+            <div className=" bg-gradient-to-r from-slate-600 to-slate-900  min-h-screen bg-gray-50 flex flex-col md:flex-row">
+                <div className="  md:w-3/4 flex justify-center items-end bg-contain bg-center" >
                     {/* Content here if needed */}
-                    <img className='w-3/4 md:w-full' src="src/assets/signup_image_4.png" alt="" />
+                    <img className='  w-3/4' src="src/assets/signup_image_4.png" alt="" srcset="" />
                 </div>
 
-                <div className="md:w-1/2 flex items-center py-12 px-4 sm:px-6 lg:px-8">
+                <div className="md:w-1/2 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
                     <div className="max-w-md w-full space-y-8 text-white">
-                        <div>
-                            <h2 className="mt-6 text-center text-3xl font-extrabold">Login to your account</h2>
+                        <div className='flex justify-start' >
+                            <h2 className="mt-6 text-amber-400 text-center text-6xl font-extrabold">Login</h2>
                         </div>
                         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
                             <input type="hidden" name="remember" defaultValue="true" />
@@ -88,7 +88,7 @@ const Login = () => {
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <div>
                                 Don't have an account? <a href="/signup" className="font-medium text-indigo-300 hover:text-indigo-200">Sign up</a>
                             </div>
