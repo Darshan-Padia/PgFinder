@@ -1,18 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import LandingPage from './components/LandingPage'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { RecoilRoot, useRecoilState } from 'recoil';
+import LandingPage from './components/LandingPage';
+import Signup from './components/Signup';
+import { roleState } from './components/Atom/RoleStateAtom';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // const [role, setRole] = useRecoilState(roleState);
   return (
-
-    <>
-     <LandingPage></LandingPage>
-    </>
-  )
+    <RecoilRoot>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </Router>
+    </RecoilRoot>
+  );
 }
 
-export default App
+export default App;
