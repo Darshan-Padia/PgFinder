@@ -10,8 +10,10 @@ import FAQSection from './LandingPage/FAQ';
 const LandingPage = () => {
   return (
     <div>
+      <div className='fixed w-full' >
       <Header />
-      <div className="bg-gray-100 min-h-screen flex flex-col justify-center items-center py-12">
+      </div>
+      <div className="bg-gray-300 min-h-screen flex flex-col justify-center items-center py-12">
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center">
           <div className="lg:w-1/2 px-4 lg:px-0">
             <h2 className="text-5xl font-bold text-gray-800 mb-4">Welcome to the</h2>
