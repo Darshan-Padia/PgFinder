@@ -21,7 +21,7 @@ const Login = () => {
 
     return (
         <div>
-            <div className='absolute w-full'>
+            <div className='fixed w-full'>
                 <Header></Header>
             </div>
             <div className=" bg-gradient-to-r from-slate-600 to-slate-900  min-h-screen bg-gray-50 flex flex-col md:flex-row">
