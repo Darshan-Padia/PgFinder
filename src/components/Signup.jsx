@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { roleState } from './Atom/RoleStateAtom';
 import { useForm } from 'react-hook-form';
 import Header from './Header';
+import axios from 'axios';
+import { Link, redirect, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [role, setRole] = useRecoilState(roleState);
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [redirectUser, setRedirectUser] = useState(false);
+  const navigate = useNavigate();
   const onSubmit = (data) => {
-    // Your signup form submission logic here
-    console.log('Role:', role);
-    console.log('Email:', data.email);
-    console.log('Password:', data.password);
-    console.log('Username:', data.username);
-    console.log('Phone:', data.phone);
+    setIsLoading(true);
+    axios.post('http://localhost:8080/api/auth/register', {
+      email: data.email,
+      password: data.password,
+      username: data.username,
+      phone: data.phone,
+      roleName: role.toLowerCase()
+    }).then((response) => {
+      console.log(response.data);
+      alert('User registered successfully');
+      // setRedirectUser(true);
+      navigate('/login');
+    }).catch((error) => {
+      console.log(error);
+      alert(error.message +"\n"+ error.response.data);
+    }).finally(() => {
+      setIsLoading(false);
+    });
   };
+  if (redirectUser) {
+    redirect('/login');
+  }
 
   const handleRoleChange = (e) => {
     setRole(e.target.value);
@@ -38,7 +57,11 @@ const Signup = () => {
             <div className='flex justify-start'>
               <h2 className="mt-6 text-amber-400 text-center text-6xl font-extrabold">Sign up</h2>
             </div>
-            <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+            {isLoading ? (
+              <div>Loading...</div>
+            ) : 
+            (
+              <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="flex flex-col gap-2 rounded-lg shadow-sm -space-y-px">
                 <div>
@@ -108,13 +131,16 @@ const Signup = () => {
                 </div>
 
                 <div className="text-sm">
-                  <a href="#" className="font-medium text-indigo-300 hover:text-indigo-200">
-                    Forgot your password?
-                  </a>
+                  
                 </div>
               </div>
               <div>
-                Already have an account ? <a href="/login" className="font-medium text-indigo-300 hover:text-indigo-200">Login</a>
+                <Link
+                  to="/login"
+                  className="font-medium text-indigo-300 hover:text-indigo-200"
+                >
+                  Already have an account? Login
+                </Link>
               </div>
               <div>
                 <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -122,6 +148,7 @@ const Signup = () => {
                 </button>
               </div>
             </form>
+            )}
           </div>
         </div>
       </div>
